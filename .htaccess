@@ -1,0 +1,99 @@
+# =====================================================================
+# HloMedia - .htaccess
+#
+# Hardening + SEO essentials. Tested on Apache 2.4 with mod_rewrite,
+# mod_headers, mod_deflate, mod_expires (all standard on Hostinger).
+# =====================================================================
+
+# Force HTTPS + canonical www host
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
+    # Force www (canonical)
+    RewriteCond %{HTTP_HOST} ^hlo-media\.com$ [NC]
+    RewriteRule ^(.*)$ https://www.hlo-media.com/$1 [L,R=301]
+
+    # Pretty sitemap URL (Google expects /sitemap.xml; we serve dynamic PHP)
+    RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+    # Strip /index.php from URLs to prevent duplicate content
+    RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+</IfModule>
+
+# =====================================================================
+# Security headers
+# =====================================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # HSTS - only enable after confirming HTTPS works for ALL subdomains
+    # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# =====================================================================
+# Compression (faster page loads = better SEO ranking signal)
+# =====================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+    AddOutputFilterByType DEFLATE image/svg+xml application/rss+xml
+</IfModule>
+
+# =====================================================================
+# Browser caching for static assets
+# =====================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    ExpiresByType image/jpeg                 "access plus 1 year"
+    ExpiresByType image/png                  "access plus 1 year"
+    ExpiresByType image/webp                 "access plus 1 year"
+    ExpiresByType image/svg+xml              "access plus 1 year"
+    ExpiresByType image/x-icon               "access plus 1 year"
+    ExpiresByType image/gif                  "access plus 1 month"
+
+    ExpiresByType text/css                   "access plus 1 month"
+    ExpiresByType application/javascript     "access plus 1 month"
+    ExpiresByType text/javascript            "access plus 1 month"
+
+    ExpiresByType application/font-woff      "access plus 1 year"
+    ExpiresByType application/font-woff2     "access plus 1 year"
+    ExpiresByType font/woff                  "access plus 1 year"
+    ExpiresByType font/woff2                 "access plus 1 year"
+
+    ExpiresByType text/html                  "access plus 0 seconds"
+    ExpiresByType application/xml            "access plus 1 hour"
+</IfModule>
+
+# =====================================================================
+# Protect sensitive files
+# =====================================================================
+<FilesMatch "\.(env|log|sql|md|sh|gitignore)$">
+    Require all denied
+</FilesMatch>
+
+<Files "composer.json">
+    Require all denied
+</Files>
+<Files "composer.lock">
+    Require all denied
+</Files>
+
+# Block direct access to /includes/ and /server/ except via PHP includes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/.*\.(php|inc)$ - [F,L]
+    RewriteRule ^server/(migrations|config)\.php$ - [F,L]
+    RewriteRule ^server/migrations/.* - [F,L]
+</IfModule>
+
+# Default index files
+DirectoryIndex index.php index.html

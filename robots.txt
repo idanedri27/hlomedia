@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Block sensitive infrastructure
+Disallow: /server/
+Disallow: /vendor/
+Disallow: /includes/
+Disallow: /scripts/
+Disallow: /thanks.php
+Disallow: /thank-you.php
+Disallow: /generate_post.php
+Disallow: /cron_log.txt
+Disallow: /הסבר_עבודה_extracted/
+
+# Block search/UTM URL variations to prevent duplicate content indexing
+Disallow: /*?utm_
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+
+# Crawl delay courtesy
+Crawl-delay: 1
+
+Sitemap: https://www.hlo-media.com/sitemap.xml

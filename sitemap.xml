@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is overridden by sitemap.php on production via .htaccess rewrite.
+  Kept here as a static fallback in case mod_rewrite is unavailable.
+  The dynamic generator at /sitemap.php pulls all 144 blog posts from the
+  DB - regenerate it once new content is published.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.hlo-media.com/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.hlo-media.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.hlo-media.com/en.php"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.hlo-media.com/"/>
+  </url>
+  <url>
+    <loc>https://www.hlo-media.com/en.php</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

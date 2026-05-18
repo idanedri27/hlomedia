@@ -1,0 +1,17 @@
+vendor/
+node_modules/
+.env
+.env.*
+*.log
+*.db
+*.sqlite
+*.bak
+blog/.backup-*/
+הסבר_עבודה_extracted/
+הסבר עבודה.zip
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+cron_log.txt

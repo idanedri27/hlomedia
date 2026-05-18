@@ -2,272 +2,131 @@
 /**
  * server/function.php
  *
- * Handles two incoming JSON payloads from the frontend:
- *   1. {quotation: true, email, location, ...attribution}  → quotation request
- *   2. {lead: true, fullname, email, subject, message, location, ...attribution} → contact form lead
+ * Lead form handler - forwards to the central SEO Platform API.
  *
- * Saves the lead + attribution data to the MySQL `leads` table
- * (see server/migrations/001_attribution.sql), then sends an email
- * notification with the attribution metadata so we can see WHERE the
- * lead came from (landing page, UTM, search query, referrer).
+ * No DB access here. No local persistence. This is a pure pass-through
+ * with input normalization (our form field names differ slightly from
+ * the API spec).
+ *
+ * On API failure → fallback email goes out + we return 200 so the user
+ * never sees an error.
  */
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/config.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
-// --------------------------------------------------------------------------
-// Helpers
-// --------------------------------------------------------------------------
-
-function hlm_sanitize_str($v, $maxLen = 1000) {
-    $v = is_string($v) ? trim($v) : '';
-    $v = mb_substr($v, 0, $maxLen, 'UTF-8');
-    return $v;
-}
-
-function hlm_extract_search_query($referrer) {
-    if (!$referrer) return '';
-    if (preg_match('/[?&]q=([^&]+)/i', $referrer, $m)) {
-        return urldecode($m[1]);
-    }
-    return '';
-}
-
-function hlm_is_mobile($ua) {
-    return preg_match('/(Mobile|Android|iPhone|iPad|iPod|Opera Mini|IEMobile)/i', $ua) ? 1 : 0;
-}
-
-/**
- * Inserts a lead into the `leads` table. Falls back to `customers` if the
- * `leads` table isn't there yet (graceful pre-migration behaviour).
- *
- * @param mysqli $con
- * @param array $data
- * @return int|false  lead id or false on failure
- */
-function hlm_save_lead(mysqli $con, array $data) {
-    // Attempt new `leads` table first.
-    $check = $con->query("SHOW TABLES LIKE 'leads'");
-    if ($check && $check->num_rows > 0) {
-        $stmt = $con->prepare("
-            INSERT INTO leads (
-                lead_type, name, email, phone, subject, message,
-                landing_page, original_referrer,
-                utm_source, utm_medium, utm_campaign, utm_term, utm_content,
-                search_query, location, user_agent, ip_address, is_mobile, created_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
-        ");
-        if (!$stmt) {
-            error_log('Leads prepare failed: ' . $con->error);
-            return false;
-        }
-        // 17 strings + 1 int (is_mobile)
-        $stmt->bind_param(
-            'sssssssssssssssssi',
-            $data['lead_type'],
-            $data['name'],
-            $data['email'],
-            $data['phone'],
-            $data['subject'],
-            $data['message'],
-            $data['landing_page'],
-            $data['original_referrer'],
-            $data['utm_source'],
-            $data['utm_medium'],
-            $data['utm_campaign'],
-            $data['utm_term'],
-            $data['utm_content'],
-            $data['search_query'],
-            $data['location'],
-            $data['user_agent'],
-            $data['ip_address'],
-            $data['is_mobile']
-        );
-        $ok = $stmt->execute();
-        if (!$ok) {
-            error_log('Leads insert failed: ' . $stmt->error);
-            return false;
-        }
-        return $con->insert_id;
-    }
-
-    // Fallback: legacy `customers` table (pre-migration).
-    $stmt = $con->prepare("INSERT INTO customers (email, location, date) VALUES (?, ?, NOW())");
-    if (!$stmt) {
-        error_log('Customers prepare failed: ' . $con->error);
-        return false;
-    }
-    $stmt->bind_param('ss', $data['email'], $data['location']);
-    return $stmt->execute() ? $con->insert_id : false;
-}
-
-// --------------------------------------------------------------------------
-// Email
-// --------------------------------------------------------------------------
-
-function sendEmail($to, $subject, $message, $fromEmail = 'hlomedia.office@gmail.com', $fromName = 'הלו-מדיה') {
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'hlomedia.office@gmail.com';
-        $mail->Password   = 'REMOVED_GMAIL_APP_PASSWORD'; // app password (2FA)
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-        $mail->CharSet    = 'UTF-8';
-
-        $mail->setFrom($fromEmail, $fromName);
-        $mail->addAddress($to);
-        $mail->addCC('idanedri27@gmail.com');
-
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = nl2br($message);
-        $mail->AltBody = $message;
-
-        $mail->send();
-        return true;
-    } catch (Exception $e) {
-        error_log('Email send error: ' . $mail->ErrorInfo);
-        return false;
-    }
-}
-
-// --------------------------------------------------------------------------
-// Request handling
-// --------------------------------------------------------------------------
-
-$raw = file_get_contents('php://input');
-$data = json_decode($raw, true);
-if (!is_array($data)) { $data = []; }
-
-// Honeypot: bots fill this; abort silently with 200.
-if (!empty($data['hp_website'])) {
-    echo json_encode(['success' => true, 'note' => 'thanks']);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['error' => 'Method not allowed']);
     exit;
 }
 
-// Common attribution fields, no matter which form.
-$attribution = [
-    'landing_page'      => hlm_sanitize_str($data['landing_page']      ?? '', 500),
-    'original_referrer' => hlm_sanitize_str($data['original_referrer'] ?? '', 500),
-    'utm_source'        => hlm_sanitize_str($data['utm_source']        ?? '', 150),
-    'utm_medium'        => hlm_sanitize_str($data['utm_medium']        ?? '', 150),
-    'utm_campaign'      => hlm_sanitize_str($data['utm_campaign']      ?? '', 150),
-    'utm_term'          => hlm_sanitize_str($data['utm_term']          ?? '', 150),
-    'utm_content'       => hlm_sanitize_str($data['utm_content']       ?? '', 150),
-    'search_query'      => hlm_sanitize_str($data['search_query']      ?? '', 250),
-    'location'          => hlm_sanitize_str($data['location']          ?? '', 100),
-    'user_agent'        => hlm_sanitize_str($_SERVER['HTTP_USER_AGENT'] ?? '', 500),
-    'ip_address'        => hlm_sanitize_str($_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '', 100),
-    'is_mobile'         => hlm_is_mobile($_SERVER['HTTP_USER_AGENT'] ?? ''),
+$config = require __DIR__ . '/seo-platform-config.php';
+
+// -- Parse input (supports JSON and form-encoded) -------------------------
+$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+if (stripos($contentType, 'application/json') !== false) {
+    $raw = file_get_contents('php://input');
+    $input = json_decode($raw, true);
+    if (!is_array($input)) $input = [];
+} else {
+    $input = $_POST;
+}
+
+// -- Normalize: our frontend's field names → API spec ---------------------
+// main.js sends `fullname` (legacy) - the API expects `name`.
+// attribution-capture.php sends `original_referrer` - API expects `referrer`.
+// honeypot field name in our form is `hp_website` - API expects `website`.
+$name      = trim((string) ($input['name']     ?? $input['fullname'] ?? ''));
+$email     = trim((string) ($input['email']    ?? ''));
+$phone     = trim((string) ($input['phone']    ?? ''));
+$message   = trim((string) ($input['message']  ?? ''));
+$subject   = trim((string) ($input['subject']  ?? ''));
+$referrer  = trim((string) ($input['referrer'] ?? $input['original_referrer'] ?? ($_SERVER['HTTP_REFERER'] ?? '')));
+$honeypot  = trim((string) ($input['website']  ?? $input['hp_website'] ?? ''));
+
+// Quotation form on the homepage sends only an email and no name.
+// Without a name the API will 400-reject. Substitute a sensible default
+// so we don't lose the lead.
+if (!$name && !empty($input['quotation'])) {
+    $name = 'בקשת הצעת מחיר';
+    if (!$message) {
+        $message = 'משתמש מילא את טופס "הצעת מחיר חינם" בעמוד הבית.';
+    }
+}
+
+// Pull message subject in if it exists (our contact form has a subject input)
+if ($subject && $message && stripos($message, $subject) === false) {
+    $message = "[$subject]\n$message";
+} elseif ($subject && !$message) {
+    $message = $subject;
+}
+
+// -- Build payload for the central API ------------------------------------
+$payload = [
+    'api_key'      => $config['api_key'],
+    'name'         => $name,
+    'email'        => $email,
+    'phone'        => $phone,
+    'message'      => $message,
+    'landing_page' => $input['landing_page'] ?? '',
+    'current_page' => $input['current_page'] ?? ($input['landing_page'] ?? ($_SERVER['HTTP_REFERER'] ?? '')),
+    'referrer'     => $referrer,
+    'utm_source'   => $input['utm_source']   ?? '',
+    'utm_medium'   => $input['utm_medium']   ?? '',
+    'utm_campaign' => $input['utm_campaign'] ?? '',
+    'utm_term'     => $input['utm_term']     ?? '',
+    'utm_content'  => $input['utm_content']  ?? '',
+    'website'      => $honeypot,
 ];
 
-// Backfill search query from referrer if empty.
-if (!$attribution['search_query'] && $attribution['original_referrer']) {
-    $attribution['search_query'] = hlm_extract_search_query($attribution['original_referrer']);
-}
+// -- Send to central API --------------------------------------------------
+$ch = curl_init($config['api_url']);
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST           => true,
+    CURLOPT_HTTPHEADER     => [
+        'Content-Type: application/json',
+        'X-Forwarded-For: ' . ($_SERVER['REMOTE_ADDR'] ?? ''),
+    ],
+    CURLOPT_POSTFIELDS     => json_encode($payload, JSON_UNESCAPED_UNICODE),
+    CURLOPT_TIMEOUT        => $config['timeout'],
+    CURLOPT_CONNECTTIMEOUT => 5,
+    CURLOPT_SSL_VERIFYPEER => true,
+    CURLOPT_SSL_VERIFYHOST => 2,
+]);
 
-// ---- QUOTATION REQUEST (email only) -----------------------------------
-if (!empty($data['quotation'])) {
-    $email = filter_var(trim($data['email'] ?? ''), FILTER_SANITIZE_EMAIL);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'error' => 'invalid email']);
-        exit;
-    }
+$response  = curl_exec($ch);
+$httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$curlError = curl_error($ch);
+curl_close($ch);
 
-    $lead = array_merge($attribution, [
-        'lead_type' => 'quotation',
-        'name'      => '',
-        'email'     => $email,
-        'phone'     => '',
-        'subject'   => 'Quotation request',
-        'message'   => '',
-    ]);
-
-    $lead_id = hlm_save_lead($con, $lead);
-
-    $subject = 'מייל חדש מהלו-מדיה (הצעת מחיר)';
-    $message = "שלום, יש לך מייל חדש מהלו-מדיה שמעוניין לקבל הצעת מחיר.\n";
-    $message .= "המייל שלו: \"$email\"\n\n";
-    $message .= "--- ATTRIBUTION ---\n";
-    $message .= "דף נחיתה: {$attribution['landing_page']}\n";
-    $message .= "מקור: " . ($attribution['utm_source'] ?: 'organic') . "\n";
-    $message .= "Referrer: {$attribution['original_referrer']}\n";
-    if ($attribution['search_query']) $message .= "מילת חיפוש: {$attribution['search_query']}\n";
-    if ($attribution['utm_campaign'])  $message .= "קמפיין: {$attribution['utm_campaign']}\n";
-    $message .= "מובייל: " . ($attribution['is_mobile'] ? 'כן' : 'לא') . "\n";
-    $message .= "מיקום: {$attribution['location']}\n";
-    if ($lead_id) $message .= "Lead ID: $lead_id";
-
-    sendEmail('hlomedia.office@gmail.com', $subject, $message);
-
-    echo json_encode(['success' => true, 'lead_id' => $lead_id]);
+// -- Pass-through response on success -------------------------------------
+if ($httpCode > 0 && $response !== false) {
+    http_response_code($httpCode);
+    echo $response;
     exit;
 }
 
-// ---- LEAD (full contact form) -----------------------------------------
-if (!empty($data['lead'])) {
-    $name    = hlm_sanitize_str($data['fullname'] ?? '', 200);
-    $email   = filter_var(trim($data['email'] ?? ''), FILTER_SANITIZE_EMAIL);
-    $phone   = hlm_sanitize_str($data['phone']    ?? '', 50);
-    $subject = hlm_sanitize_str($data['subject']  ?? '', 200);
-    $message = hlm_sanitize_str($data['message']  ?? '', 5000);
+// -- Fallback: API unreachable. Email Idan directly so the lead isn't lost.
+error_log("SEO Platform API unreachable (code=$httpCode err=$curlError)");
 
-    if (empty($name) || (empty($email) && empty($phone))) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'error' => 'name + (email or phone) required']);
-        exit;
-    }
+$fallbackBody  = "ליד חדש (fallback — ה-API המרכזי לא הגיב):\n\n";
+$fallbackBody .= "שם: $name\n";
+$fallbackBody .= "מייל: $email\n";
+$fallbackBody .= "טלפון: $phone\n";
+$fallbackBody .= "הודעה: $message\n\n";
+$fallbackBody .= "-- attribution --\n";
+$fallbackBody .= "Landing: " . ($payload['landing_page'] ?: '-') . "\n";
+$fallbackBody .= "Referrer: " . ($payload['referrer']     ?: '-') . "\n";
+$fallbackBody .= "UTM source: " . ($payload['utm_source'] ?: 'organic') . "\n";
 
-    if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo json_encode(['success' => false, 'error' => 'invalid email']);
-        exit;
-    }
+$headers  = "From: noreply@hlo-media.com\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    $lead = array_merge($attribution, [
-        'lead_type' => 'contact',
-        'name'      => $name,
-        'email'     => $email ?: '',
-        'phone'     => $phone,
-        'subject'   => $subject ?: 'New contact form lead',
-        'message'   => $message,
-    ]);
+@mail($config['fallback_email'], 'ליד fallback - HloMedia', $fallbackBody, $headers);
 
-    $lead_id = hlm_save_lead($con, $lead);
-
-    $emailSubject = "🔥 ליד חדש מהלו-מדיה: " . ($subject ?: $name);
-
-    $emailContent  = "שלום, יש לך פנייה חדשה מהאתר.\n\n";
-    $emailContent .= "שם מלא: $name\n";
-    if ($email)   $emailContent .= "מייל: $email\n";
-    if ($phone)   $emailContent .= "טלפון: $phone\n";
-    if ($subject) $emailContent .= "נושא: $subject\n";
-    if ($message) $emailContent .= "הודעה: $message\n";
-
-    $emailContent .= "\n--- ATTRIBUTION ---\n";
-    $emailContent .= "דף נחיתה: {$attribution['landing_page']}\n";
-    $emailContent .= "מקור: " . ($attribution['utm_source'] ?: 'organic') . "\n";
-    $emailContent .= "Referrer: {$attribution['original_referrer']}\n";
-    if ($attribution['search_query']) $emailContent .= "מילת חיפוש: {$attribution['search_query']}\n";
-    if ($attribution['utm_campaign']) $emailContent .= "קמפיין: {$attribution['utm_campaign']}\n";
-    $emailContent .= "מובייל: " . ($attribution['is_mobile'] ? 'כן' : 'לא') . "\n";
-    $emailContent .= "מיקום: {$attribution['location']}\n";
-    if ($lead_id) $emailContent .= "\nLead ID: $lead_id";
-
-    sendEmail('hlomedia.office@gmail.com', $emailSubject, $emailContent);
-
-    echo json_encode(['success' => true, 'lead_id' => $lead_id]);
-    exit;
-}
-
-http_response_code(400);
-echo json_encode(['success' => false, 'error' => 'unknown payload']);
+http_response_code(200);
+echo json_encode([
+    'success' => true,
+    'message' => 'תודה! נחזור אליך בהקדם.',
+], JSON_UNESCAPED_UNICODE);

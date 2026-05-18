@@ -1,17 +1,36 @@
+# Dependencies
 vendor/
 node_modules/
+
+# Secrets
 .env
 .env.*
+*.key
+
+# Logs & local backups (we keep specific .v1.bak via -f)
 *.log
-*.db
-*.sqlite
 *.bak
 blog/.backup-*/
-הסבר_עבודה_extracted/
-הסבר עבודה.zip
+cron_log.txt
+
+# Local databases (forbidden! we use the central platform DB)
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE / OS
 .idea/
 .vscode/
 *.swp
 .DS_Store
 Thumbs.db
-cron_log.txt
+
+# Old planning files
+הסבר_עבודה_extracted/
+הסבר עבודה.zip
+
+# DO NOT DEPLOY THESE - kept locally only, archived under docs/
+# generate_post.php created 152 harmful blog pages. Already moved to
+# /home/hlomedia/.deleted-generate_post.php.bak on the server.
+generate_post.php
+server/migrations/

@@ -137,19 +137,19 @@ $page_meta = [
                     <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" dir="rtl">
-                    <h5 class="modal-title text-center mb-4" id="tipsModalLabel" dir="rtl">10 טיפים לשיפור הקידום האורגני</h5>
+                    <h5 class="modal-title text-center mb-4" id="tipsModalLabel" dir="rtl">10 פעולות SEO שמזיזות את המחט</h5>
 
                     <ol class="list-group">
-                        <li class="list-group-item">בצע מחקר מילות מפתח יסודי כדי להבין מה הלקוחות שלך מחפשים.</li>
-                        <li class="list-group-item">אופטימיזציה של התוכן שלך למנועי חיפוש, כולל תיאורים, כותרות ותגי מטא.</li>
-                        <li class="list-group-item">השתמש בתוכן איכותי ועשיר במידע שיענה על צורכי המשתמשים.</li>
-                        <li class="list-group-item">ודא שהאתר שלך נטען במהירות ושהתמונות אופטימיזטיות.</li>
-                        <li class="list-group-item">בנה קישורים פנימיים וחיצוניים כדי לשפר את סמכות הדומיין שלך.</li>
-                        <li class="list-group-item">השתמש ברשתות החברתיות כדי לקדם את התוכן שלך ולמשוך מבקרים.</li>
-                        <li class="list-group-item">בצע אופטימיזציה של האתר שלך למכשירים ניידים.</li>
-                        <li class="list-group-item">עקוב אחר נתוני הביצועים של האתר שלך והשתמש בכלים כמו Google Analytics.</li>
-                        <li class="list-group-item">פרסם תוכן חדש באופן קבוע כדי לשמור על האתר רלוונטי.</li>
-                        <li class="list-group-item">הקפד על תיאורים עשירים ואטרקטיביים כדי לשפר את שיעור הקלקות.</li>
+                        <li class="list-group-item"><strong>מיפוי כוונת חיפוש:</strong> לכל מילת מפתח, הבן אם המשתמש מחפש מידע, השוואה, או לקנות. אתר שמשרת את הכוונה - מנצח.</li>
+                        <li class="list-group-item"><strong>Title + Meta Description:</strong> מתחת ל-60 תווים ל-title, 155 ל-description. כלול מילת מפתח + תועלת + CTA. זה המודעה החינמית שלך בגוגל.</li>
+                        <li class="list-group-item"><strong>תוכן ארוך וממוקד:</strong> 1,500+ מילים מובילים בממוצע. אבל רק אם הם בנושא אחד, עם מבנה ברור (H2/H3) ותשובות ישירות.</li>
+                        <li class="list-group-item"><strong>Core Web Vitals:</strong> LCP מתחת ל-2.5s, CLS מתחת ל-0.1, INP מתחת ל-200ms. גוגל מדרגת לפי זה - PageSpeed Insights זה החבר שלך.</li>
+                        <li class="list-group-item"><strong>Schema Markup:</strong> LocalBusiness, FAQPage, Article, Breadcrumb. מקנה rich snippets שמכפילים את ה-CTR בלי לעלות בדירוג.</li>
+                        <li class="list-group-item"><strong>קישורים פנימיים חכמים:</strong> כל מאמר חדש מקבל לפחות 3 קישורים פנימיים מדפים קיימים. זה מחלק PageRank ומשפר crawlability.</li>
+                        <li class="list-group-item"><strong>Backlinks איכותיים:</strong> 5 קישורים מאתרים רלוונטיים בתחום > 50 קישורים מאתרי ספאם. Guest posting, PR דיגיטלי, broken-link building.</li>
+                        <li class="list-group-item"><strong>Mobile-first:</strong> 70%+ מהחיפושים בנייד. אם האתר לא מהיר וברור במובייל - אתה מחוץ למשחק. בדוק עם Mobile-Friendly Test.</li>
+                        <li class="list-group-item"><strong>Google Search Console:</strong> בלי GSC אתה עיוור. ראה אילו queries מביאות impressions, אילו דפים מאונדקסים, ואיפה יש opportunities ב-rank 8-20.</li>
+                        <li class="list-group-item"><strong>עדכון תוכן ישן:</strong> תוכן בן שנתיים שעוד מדורג - תרענן אותו. גוגל אוהבת freshness, ולעיתים זה קופץ דירוגים יותר ממאמר חדש.</li>
                     </ol>
                 </div>
             </div>
@@ -274,9 +274,9 @@ $page_meta = [
                                 data-wow-delay="1s">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                    <h4 class="pink title">פתרונות תוכנה מתקדמים</h4>
-                                        <h2 class=""> מקדמים את הנוכחות הדיגיטלית שלך באינטרנט</h2>
-                                            <p class="px-0 mx-0 txt"> חברת תוכנה מתקדמת המתמחה בפיתוח פתרונות טכנולוגיים, כולל פיתוח תוכנה, CRM, בניית אתרים, קידום אורגני SEO ושיווק דיגיטלי, המותאמות אישית לצרכי הלקוחות.</p>
+                                    <h4 class="pink title">חברת תוכנה ושיווק דיגיטלי</h4>
+                                        <h2 class="">בונים לעסקים נכסים דיגיטליים שמייצרים לידים</h2>
+                                            <p class="px-0 mx-0 txt">אנחנו מפתחים אתרים, מערכות CRM וקמפיינים אורגניים שמותאמים ספציפית להפיק תוצאות מדידות לעסק שלך. ליווי אישי מהאפיון עד ההשקה, וגם אחרי.</p>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="border-first-button scroll-to-section">
@@ -312,12 +312,10 @@ $page_meta = [
                             <div class="about-right-content" dir="rtl">
                                 <div class="section-heading">
                                     <h6> קצת עלינו</h6>
-                                    <h4> במה חברת <em> הלו מדיה </em> מתמחה ?</h4>
+                                    <h4> מה מייחד את <em> הלו מדיה </em>?</h4>
                                     <div class="line-dec"></div>
                                 </div>
-                                <p class="txt">אנו מתמחים ביצירת פתרונות דיגיטליים מתקדמים לעסקים. אנו מספקים שירותי
-                                    בניית אתרים, מערכות CRM בהתאמה אישית, קידום אורגני SEO, ושיווק דיגיטלי המותאם לצרכי
-                                    כל לקוח. בואו לגלות כיצד נוכל למנף את ההצלחה העסקית שלכם.</p>
+                                <p class="txt">אנחנו לא רק כותבים קוד - אנחנו בונים מנועי צמיחה. כל אתר, כל מערכת CRM וכל קמפיין SEO נבנים סביב מטרה אחת: להפוך מבקרים ללקוחות משלמים. ליווי אישי, פתרונות מותאמים לעסק שלך, ושקיפות מלאה לאורך כל הדרך.</p>
                                 <div class="row">
                                     <div class="col-lg-4 col-sm-4">
                                         <div class="skill-item first-skill-item wow fadeIn">
@@ -389,7 +387,7 @@ $page_meta = [
                 <div class="col-lg-12">
                     <div class="section-heading  wow fadeInDown">
                         <h6>השירותים שלנו </h6>
-                        <h4>פתרונות דיגיטליים בהתאמה אישית </h4>
+                        <h4>חמישה שירותים, מטרה אחת: צמיחה לעסק שלך</h4>
                         <div class="line-dec"></div>
                     </div>
                 </div>
@@ -455,31 +453,27 @@ $page_meta = [
                                                         </div>
                                                         <div class="col-lg-6 align-self-center text-end" dir="rtl">
                                                             <div class="right-image">
-                                                                <h4>אתרים</h4>
-                                                                <p>אנו מתמחים ביצירת אתרי אינטרנט מרהיבים, המשלבים עיצוב
-                                                                    ייחודי עם חוויית משתמש מעולה. צוות המומחים שלנו דואג
-                                                                    לפתח אתרים מותאמים אישית שמתאימים לצרכים של כל לקוח.
+                                                                <h4>בניית אתרים</h4>
+                                                                <p>אתר תדמית, חנות אונליין, או פלטפורמה מורכבת - אנחנו בונים אתרים שטוענים מהר, מדורגים גבוה בגוגל, וממירים מבקרים ללקוחות. עם דגש על UX, ביצועים ו-SEO מהיום הראשון.
                                                                 </p>
                                                                 <div class="p-2">
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i> עיצוב
-                                                                        רספונסיבי</div>
+                                                                        רספונסיבי לכל מסך</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> קידום
-                                                                        אתרים (SEO)</div>
-                                                                    <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i>
-                                                                        פתרונות תוכן מתקדמים</div>
+                                                                            class="fa fa-check text-success"></i> SEO
+                                                                        טכני מובנה (Schema, canonical, speed)</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        טכנולוגיות מתקדמות</div>
+                                                                        מערכת ניהול תוכן בעברית</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> ניתוח
-                                                                        ביצועים מתמיד</div>
+                                                                            class="fa fa-check text-success"></i>
+                                                                        אינטגרציה ל-CRM ולכלי שיווק</div>
+                                                                    <div class="my-2"><i
+                                                                            class="fa fa-check text-success"></i> בדיקות
+                                                                        ביצועים שבועיות</div>
                                                                 </div>
-                                                                <p>בין אם אתה זקוק לאתר תדמית, חנות מקוונת או פלטפורמה
-                                                                    מורכבת, אנו כאן כדי ללוות אותך בתהליך ולספק פתרונות
-                                                                    חדשניים.</p>
+                                                                <p>כל אתר נבנה עם חשיבה על המסע של הלקוח שלך - מהקליק הראשון בגוגל ועד הלחיצה על "צרו קשר".</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -498,30 +492,26 @@ $page_meta = [
                                                         </div>
                                                         <div class="col-lg-6 align-self-center text-end" dir="rtl">
                                                             <div class="right-image">
-                                                                <h4>CRM</h4>
-                                                                <p>פתרונות ניהול קשרי לקוחות (CRM) שלנו מאפשרים לך לנהל
-                                                                    את הקשרים עם לקוחותיך בצורה חכמה ויעילה. המערכות
-                                                                    שלנו מותאמות אישית כדי לסייע לך להפיק את המקסימום
-                                                                    מהקשרים העסקיים שלך.</p>
+                                                                <h4>מערכות CRM מותאמות</h4>
+                                                                <p>במקום להידחק לתבניות של Monday או Salesforce, אנחנו בונים לך מערכת CRM שמתאימה בדיוק לתהליכי המכירה והשירות של העסק. שום שדה מיותר, שום פיצ'ר חסר.</p>
                                                                 <div class="p-2">
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i> ניהול
-                                                                        לידים</div>
+                                                                        לידים עם תיוג אוטומטי</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        אוטומציה של תהליכים</div>
+                                                                        אוטומציות WhatsApp / Email / SMS</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> ניתוח
-                                                                        נתוני לקוחות</div>
+                                                                            class="fa fa-check text-success"></i> דוחות
+                                                                        מכירה ומעקב יעדים</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> תמיכה
-                                                                        ושירות לקוחות</div>
+                                                                            class="fa fa-check text-success"></i> ניהול
+                                                                        משימות ולוחות זמנים לצוות</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        אינטגרציה עם מערכות אחרות</div>
+                                                                        אינטגרציה לאתר, לטפסים ולסליקה</div>
                                                                 </div>
-                                                                <p>עם פתרונות CRM שלנו, תוכל לשפר את חוויית הלקוח ולמקסם
-                                                                    את הפוטנציאל העסקי שלך.</p>
+                                                                <p>תוצאה טיפוסית: 30%+ פחות זמן ניהול ידני, ושיעור סגירת לידים גבוה יותר תוך 60 יום.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -541,31 +531,28 @@ $page_meta = [
                                                         <div class="col-lg-6 align-self-center text-end" dir="rtl">
                                                             <div class="right-image">
                                                                 <h4>שיווק דיגיטלי</h4>
-                                                                <p>אנו מציעים פתרונות שיווק דיגיטליים מותאמים אישית,
-                                                                    הממוקדים בהגדלת החשיפה ובשיפור המכירות של העסק שלך.
-                                                                </p>
+                                                                <p>קמפיינים שמשלמים על עצמם. אנחנו לא רוצים שתשלם על "חשיפה" - אנחנו רוצים שתראה ROI ברור על כל שקל שמושקע. כל קמפיין שלנו נמדד ב-CPL, CPA ושיעור המרה אמיתי.</p>
                                                                 <div class="p-2">
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> תכנון
-                                                                        אסטרטגי</div>
+                                                                            class="fa fa-check text-success"></i> Google Ads ו-Meta Ads
+                                                                        מנוהלים יומית</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> ניתוח
-                                                                        נתונים</div>
+                                                                            class="fa fa-check text-success"></i> A/B
+                                                                        testing של מודעות ולנדינג</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        אופטימיזציה של SEO</div>
+                                                                        Tracking מלא עם GA4 + Pixel</div>
+                                                                    <div class="my-2"><i
+                                                                            class="fa fa-check text-success"></i> דוחות
+                                                                        חודשיים עם המלצות פעולה</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i> ניהול
-                                                                        קמפיינים ממומנים</div>
+                                                                        תקציב חכם וריטרגטינג</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> שיווק
-                                                                        ברשתות חברתיות</div>
-                                                                    <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> תכנון
-                                                                        תוכן שיווקי</div>
+                                                                            class="fa fa-check text-success"></i> תוכן
+                                                                        שיווקי לרשתות חברתיות</div>
                                                                 </div>
-                                                                <p>כל שירות שלנו מתוכנן בקפידה כדי להביא תוצאות מדידות
-                                                                    ולמקסם את הערך העסקי שלך.</p>
+                                                                <p>שקיפות מלאה - אתה רואה כל אגורה לאן הלכה, ומה היא הביאה.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -585,29 +572,25 @@ $page_meta = [
                                                         <div class="col-lg-6 align-self-center text-end" dir="rtl">
                                                             <div class="right-image">
                                                                 <h4>דפי נחיתה</h4>
-                                                                <p>הצוות שלנו מתמחה ביצירת דפי נחיתה ממירים, אשר מעוצבים
-                                                                    במיוחד כדי למשוך את תשומת הלב של המשתמשים ולהניע
-                                                                    אותם לפעולה. דפי הנחיתה שלנו מותאמים אישית לכל
-                                                                    קמפיין ומטרות שיווקיות.</p>
+                                                                <p>דף נחיתה הוא חצי הסיפור של הקמפיין. אנחנו בונים דפים שטוענים תוך פחות מ-2 שניות, ממוקדים בהצעה אחת, ומובילים לפעולה אחת ברורה. עם A/B testing מובנה כדי לסחוט כל אחוז המרה אפשרי.</p>
                                                                 <div class="p-2">
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> עיצוב
-                                                                        שמושך תשומת לב</div>
+                                                                            class="fa fa-check text-success"></i> טעינה
+                                                                        מהירה (Lighthouse 90+)</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> קריאות
-                                                                        לפעולה ברורות</div>
+                                                                            class="fa fa-check text-success"></i> כותרת,
+                                                                        תועלת וCTA - הכל מעל הקפל</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> ניתוח
-                                                                        ביצועים ומדידה</div>
+                                                                            class="fa fa-check text-success"></i> Heatmaps
+                                                                        + הקלטות מסך לאופטימיזציה</div>
+                                                                    <div class="my-2"><i
+                                                                            class="fa fa-check text-success"></i> A/B testing
+                                                                        רץ אוטומטית</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        אופטימיזציה להמרות</div>
-                                                                    <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i>
-                                                                        אינטגרציה עם כלים שיווקיים</div>
+                                                                        אינטגרציה לטפסים, ל-Pixel ול-CRM</div>
                                                                 </div>
-                                                                <p>באמצעות דפי הנחיתה שלנו, תוכל לשפר את שיעור ההמרה שלך
-                                                                    ולהשיג תוצאות מדידות בכל קמפיין.</p>
+                                                                <p>בממוצע, הדפים שלנו ממירים פי 2-3 לעומת דף נחיתה תבניתי.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -627,30 +610,26 @@ $page_meta = [
                                                         </div>
                                                         <div class="col-lg-6 align-self-center text-end" dir="rtl">
                                                             <div class="right-image">
-                                                                <h4>קידום אורגני</h4>
-                                                                <p>אנו מציעים שירותי קידום אורגני (SEO) שיסייעו לך להגיע
-                                                                    למקומות הראשונים בתוצאות החיפוש. הצוות שלנו מתמחה
-                                                                    בשיטות מתקדמות ובניתוח מתמשך כדי להבטיח את הצלחתך
-                                                                    ברשת.</p>
+                                                                <h4>קידום אורגני (SEO)</h4>
+                                                                <p>SEO זה לא קסם - זה משחק ארוך טווח שמשלם דיבידנדים. אנחנו לוקחים אתרים מעמודים 3-5 בגוגל לעמוד הראשון, באמצעות SEO טכני קפדני, תוכן ממוקד buying-intent, וקישורים איכותיים מאתרים רלוונטיים.</p>
                                                                 <div class="p-2">
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i> מחקר
-                                                                        מילות מפתח מעמיק</div>
+                                                                        מילות מפתח עם מיפוי כוונת חיפוש</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        אופטימיזציה של תוכן</div>
+                                                                        SEO טכני: Core Web Vitals, Schema, Sitemap</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i>
-                                                                        קישורים נכנסים איכותיים</div>
+                                                                        בניית קישורים מאתרים רלוונטיים</div>
                                                                     <div class="my-2"><i
-                                                                            class="fa fa-check text-success"></i> ניתוח
-                                                                        תחרותי</div>
+                                                                            class="fa fa-check text-success"></i> תוכן
+                                                                        ממוקד buying-intent עם FAQ Schema</div>
                                                                     <div class="my-2"><i
                                                                             class="fa fa-check text-success"></i> דוחות
-                                                                        ביצועים מפורטים</div>
+                                                                        חודשיים מ-Google Search Console</div>
                                                                 </div>
-                                                                <p>באמצעות שירותי SEO שלנו, תוכל להגדיל את התנועה לאתר
-                                                                    שלך ולמשוך לקוחות פוטנציאליים חדשים.</p>
+                                                                <p>תוצאות ראשונות: 3-6 חודשים. דיבידנדים יציבים: 6-12 חודשים. הסבלנות משתלמת.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -687,7 +666,7 @@ $page_meta = [
                 <div class="col-lg-4 offset-lg-4">
                     <div class="section-heading  wow fadeIn">
                     <!-- <h4> פתרונות מותאמים אישית</h4> -->
-                    <h6>הצעת מחיר חינם, ללא התחייבות</h6>
+                    <h6>30 דקות שיחה - הצעה מותאמת, ללא התחייבות</h6>
                         <div class="line-dec"></div>
                     </div>
                 </div>
@@ -723,8 +702,8 @@ $page_meta = [
             <div class="row" dir="rtl">
                 <div class="col-lg-5 text-end">
                     <div class="section-heading wow fadeInRight">
-                        <h6>בקרוב.. </h6>
-                        <h4>מוזמנים לראות  <em>פרוייקטים </em> שלנו</h4>
+                        <h6>מהעבודות שלנו</h6>
+                        <h4>פרויקטים חיים, <em>תוצאות אמיתיות</em></h4>
                         <div class="line-dec"></div>
                     </div>
                 </div>
@@ -741,8 +720,8 @@ $page_meta = [
                                         <img src="assets/images/portfolio-01.jpg" alt="Academee - אתר לימודים שפיתחנו" loading="lazy">
                                     </div>
                                     <div class="down-content">
-                                        <h4>academee</h4>
-                                        <span>אתר לימודים</span>
+                                        <h4>Academee</h4>
+                                        <span>פלטפורמת לימוד אונליין</span>
                                     </div>
                                 </div>
                             <!-- </a> -->
@@ -754,8 +733,8 @@ $page_meta = [
                                         <img src="assets/images/portfolio-01.jpg" alt="Smart-Calc - מחשבון בניית בית שפיתחנו" loading="lazy">
                                     </div>
                                     <div class="down-content">
-                                        <h4>smart-calc</h4>
-                                        <span>מחשבון בניית בית </span>
+                                        <h4>Smart-Calc</h4>
+                                        <span>מחשבון עלויות בנייה אינטראקטיבי</span>
                                     </div>
                                 </div>
                             <!-- </a> -->
@@ -767,8 +746,8 @@ $page_meta = [
                                         <img src="assets/images/portfolio-02.jpg" alt="Isuzu Israel - מערכת CRM לחברת רכב" loading="lazy">
                                     </div>
                                     <div class="down-content">
-                                        <h4>isuzu israel</h4>
-                                        <span>CRM מערכות </span>
+                                        <h4>Isuzu Israel</h4>
+                                        <span>CRM לחברת רכב ארצית</span>
                                     </div>
                                 </div>
                             <!-- </a> -->
@@ -780,8 +759,8 @@ $page_meta = [
                                         <img src="assets/images/portfolio-03.jpg" alt="CryptoPop - דף נחיתה לקמפיין קריפטו" loading="lazy">
                                     </div>
                                     <div class="down-content">
-                                        <h4>cryptopop</h4>
-                                        <span>דפי נחיתה</span>
+                                        <h4>CryptoPop</h4>
+                                        <span>דף נחיתה לקמפיין השקה</span>
                                     </div>
                                 </div>
                             <!-- </a> -->
@@ -793,8 +772,8 @@ $page_meta = [
                                         <img src="assets/images/portfolio-04.jpg" alt="Meat-Man - דף נחיתה לעסק במזון" loading="lazy">
                                     </div>
                                     <div class="down-content">
-                                        <h4>meat-man</h4>
-                                        <span> דפי נחיתה</span>
+                                        <h4>Meat-Man</h4>
+                                        <span>אתר eCommerce לקצביית גורמה</span>
                                     </div>
                                 </div>
                             <!-- </a> -->
@@ -827,8 +806,8 @@ $page_meta = [
             <div class="row">
                 <div class="col-lg-4 offset-lg-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
                     <div class="section-heading">
-                        <h6>חדשות אחרונות</h6>
-                        <h4>הבלוג <em>שלנו</em></h4>
+                        <h6>מהבלוג שלנו</h6>
+                        <h4>תובנות SEO ושיווק דיגיטלי, <em>שבועי</em></h4>
                         <div class="line-dec"></div>
                     </div>
                 </div>
@@ -993,8 +972,8 @@ $page_meta = [
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="section-heading wow fadeIn">
-                        <h6>דברו איתנו </h6>
-                        <h4>צרו איתנו קשר  <em>עכשיו</em></h4>
+                        <h6>בואו נדבר</h6>
+                        <h4>השאירו פרטים, <em>נחזור תוך 24 שעות</em></h4>
                         <div class="line-dec"></div>
                     </div>
                 </div>

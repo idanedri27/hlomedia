@@ -53,19 +53,19 @@ $page_meta = [
                 <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" dir="ltr">
-                <h5 class="modal-title text-center mb-4" id="tipsModalLabel" dir="ltr">10 Tips for Improving Organic SEO</h5>
+                <h5 class="modal-title text-center mb-4" id="tipsModalLabel" dir="ltr">10 SEO Actions That Actually Move the Needle</h5>
 
                 <ol class="list-group">
-                    <li class="list-group-item">Conduct thorough keyword research to understand what your customers are searching for.</li>
-                    <li class="list-group-item">Optimize your content for search engines, including descriptions, headings, and meta tags.</li>
-                    <li class="list-group-item">Use high-quality, informative content that meets user needs.</li>
-                    <li class="list-group-item">Ensure your website loads quickly and that images are optimized.</li>
-                    <li class="list-group-item">Build internal and external links to improve your domain authority.</li>
-                    <li class="list-group-item">Utilize social media to promote your content and attract visitors.</li>
-                    <li class="list-group-item">Optimize your website for mobile devices.</li>
-                    <li class="list-group-item">Monitor your website's performance data and use tools like Google Analytics.</li>
-                    <li class="list-group-item">Regularly publish new content to keep your site relevant.</li>
-                    <li class="list-group-item">Ensure rich and attractive descriptions to improve click-through rates.</li>
+                    <li class="list-group-item"><strong>Search-intent mapping:</strong> For every keyword, know whether the user wants info, comparison, or to buy. Pages that serve intent — win.</li>
+                    <li class="list-group-item"><strong>Title + Meta description:</strong> Under 60 chars for title, 155 for description. Include keyword + benefit + CTA. This is your free ad in Google.</li>
+                    <li class="list-group-item"><strong>Long-form, focused content:</strong> 1,500+ words lead on average. But only when they stay on one topic, with clear structure (H2/H3) and direct answers.</li>
+                    <li class="list-group-item"><strong>Core Web Vitals:</strong> LCP under 2.5s, CLS under 0.1, INP under 200ms. Google ranks on this — PageSpeed Insights is your friend.</li>
+                    <li class="list-group-item"><strong>Schema markup:</strong> LocalBusiness, FAQPage, Article, Breadcrumb. Earns rich snippets that double your CTR without changing your rank.</li>
+                    <li class="list-group-item"><strong>Smart internal links:</strong> Every new article gets at least 3 internal links from existing pages. Distributes PageRank and improves crawlability.</li>
+                    <li class="list-group-item"><strong>Quality backlinks:</strong> 5 links from relevant industry sites > 50 links from spammy ones. Guest posts, digital PR, broken-link building.</li>
+                    <li class="list-group-item"><strong>Mobile-first:</strong> 70%+ of searches are mobile. If your site isn't fast and clear on phones — you're out of the race. Test with Mobile-Friendly Test.</li>
+                    <li class="list-group-item"><strong>Google Search Console:</strong> Without GSC you're blind. See which queries earn impressions, which pages get indexed, and where you have opportunities at rank 8-20.</li>
+                    <li class="list-group-item"><strong>Refresh old content:</strong> Two-year-old content still ranking? Update it. Google rewards freshness — often boosts more than writing a new article.</li>
                 </ol>
             </div>
         </div>
@@ -190,9 +190,9 @@ $page_meta = [
                         <div class="left-content show-up header-text wow" data-wow-delay="1s">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4 class="pink title">Advanced Software Solutions</h4>
-                                    <h2 class=""> Elevating Your Digital Presence Online</h2>
-                                    <p class="px-0 mx-0 txt"> An advanced software company specializing in the development of technological solutions, including software development, CRM, website building, organic SEO, and digital marketing, tailored to the clients' needs.</p>
+                                    <h4 class="pink title">Software & Digital Marketing Agency</h4>
+                                    <h2 class="">Digital Assets That Generate Leads</h2>
+                                    <p class="px-0 mx-0 txt">We build websites, CRM systems, and organic campaigns that are tailored to deliver measurable results for your business. Personal guidance from spec to launch — and beyond.</p>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="border-first-button scroll-to-section">
@@ -228,11 +228,11 @@ $page_meta = [
                     <div class="col-lg-6 align-self-center order-1 order-lg-2 wow fadeInRight">
                         <div class="about-right-content" dir="ltr">
                             <div class="section-heading">
-                                <h6> A Bit About Us</h6>
-                                <h4> What Does <em> Hlo Media </em> Specialize In?</h4>
+                                <h6> About Us</h6>
+                                <h4> What Sets <em> Hlo Media </em> Apart?</h4>
                                 <div class="line-dec"></div>
                             </div>
-                            <p class="txt"> We specialize in creating advanced digital solutions for businesses. We provide website development services, customized CRM systems, organic SEO, and digital marketing tailored to each client's needs. Come discover how we can leverage your business success.</p>
+                            <p class="txt">We don't just write code — we build growth engines. Every website, CRM system, and SEO campaign is designed around one goal: turning visitors into paying customers. Personal guidance, tailored solutions, and full transparency along the way.</p>
                             <div class="row">
                                 <div class="col-lg-4 col-sm-4">
                                     <div class="skill-item first-skill-item wow fadeIn">
@@ -305,7 +305,7 @@ $page_meta = [
             <div class="col-lg-12">
                 <div class="section-heading wow fadeInDown">
                     <h6>Our Services</h6>
-                    <h4>Custom Digital Solutions</h4>
+                    <h4>Five Services, One Goal: Growing Your Business</h4>
                     <div class="line-dec"></div>
                 </div>
             </div>
@@ -360,16 +360,16 @@ $page_meta = [
                                                 <div class="row">
                                                     <div class="col-lg-6 align-self-center">
                                                         <div class="left-text" dir="ltr">
-                                                        <h4>Websites</h4>
-                                                            <p>We specialize in creating stunning websites that combine unique design with excellent user experience. Our expert team ensures to develop custom websites tailored to each client's needs.</p>
+                                                        <h4>Web Development</h4>
+                                                            <p>Showcase site, online store, or complex platform — we build sites that load fast, rank high in Google, and turn visitors into customers. UX, performance, and SEO baked in from day one.</p>
                                                             <div class="p-2">
                                                                 <div class="my-2"><i class="fa fa-check text-success"></i> Responsive Design</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> SEO Optimization</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Advanced Content Solutions</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Advanced Technologies</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Continuous Performance Analysis</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Technical SEO Built-In (Schema, canonical, speed)</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Hebrew + English CMS</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> CRM and Marketing Stack Integration</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Weekly Performance Audits</div>
                                                             </div>
-                                                            <p>Whether you need a showcase website, an online store, or a complex platform, we are here to guide you through the process and provide innovative solutions.</p>
+                                                            <p>Every site is built around your customer's journey — from the first click in Google to the "Contact Us" button.</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 align-self-center text-end" dir="ltr">
@@ -388,16 +388,16 @@ $page_meta = [
                                                 <div class="row">
                                                     <div class="col-lg-6 align-self-center">
                                                         <div class="left-text" dir="ltr">
-                                                        <h4>CRM</h4>
-                                                            <p>Our Customer Relationship Management (CRM) solutions allow you to manage your relationships with clients intelligently and efficiently. Our systems are customized to help you maximize your business relationships.</p>
+                                                        <h4>Custom CRM Systems</h4>
+                                                            <p>Instead of forcing your business into Monday or Salesforce templates, we build a CRM that matches your exact sales and service workflows. No unused fields, no missing features.</p>
                                                             <div class="p-2">
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Lead Management</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Process Automation</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Customer Data Analysis</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Customer Support and Service</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Integration with Other Systems</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Lead Management with Auto-Tagging</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> WhatsApp / Email / SMS Automation</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Sales Reports and Goal Tracking</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Team Tasks and Scheduling</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Website, Forms, and Payment Integration</div>
                                                             </div>
-                                                            <p>With our CRM solutions, you can enhance customer experience and maximize your business potential.</p>
+                                                            <p>Typical outcome: 30%+ less manual admin time and higher lead-close rates within 60 days.</p>
                                                             
                                                         </div>
                                                     </div>
@@ -418,16 +418,16 @@ $page_meta = [
                                                     <div class="col-lg-6 align-self-center">
                                                         <div class="left-text" dir="ltr">
                                                         <h4>Digital Marketing</h4>
-                                                            <p>We offer personalized digital marketing solutions focused on increasing visibility and improving your business sales.</p>
+                                                            <p>Campaigns that pay for themselves. We don't want you paying for "impressions" — we want clear ROI on every shekel spent. Every campaign measured by real CPL, CPA, and conversion rate.</p>
                                                             <div class="p-2">
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Strategic Planning</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Data Analysis</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> SEO Optimization</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Management of Paid Campaigns</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Social Media Marketing</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Marketing Content Planning</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Daily-Managed Google Ads & Meta Ads</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> A/B Testing of Ads & Landing Pages</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Full Tracking with GA4 + Pixel</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Monthly Reports with Action Items</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Smart Budget Management & Retargeting</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Social Media Content Creation</div>
                                                             </div>
-                                                            <p>Each of our services is carefully designed to deliver measurable results and maximize your business value.</p>
+                                                            <p>Full transparency — you see where every dollar went and what it brought back.</p>
                                                          
                                                         </div>
                                                     </div>
@@ -448,15 +448,15 @@ $page_meta = [
                                                     <div class="col-lg-6 align-self-center">
                                                         <div class="left-text" dir="ltr">
                                                         <h4>Landing Pages</h4>
-                                                            <p>Our team specializes in creating high-converting landing pages, designed specifically to grab users' attention and drive them to take action. Our landing pages are customized for each campaign and marketing objectives.</p>
+                                                            <p>The landing page is half the campaign. We build pages that load in under 2 seconds, focus on one offer, and drive to one clear action. With built-in A/B testing to squeeze out every possible conversion point.</p>
                                                             <div class="p-2">
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Attention-Grabbing Design</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Clear Calls to Action</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Performance Analysis and Measurement</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Conversion Optimization</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Integration with Marketing Tools</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Fast Load (Lighthouse 90+)</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Headline, Benefit, and CTA Above the Fold</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Heatmaps + Session Recordings</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Automated A/B Testing</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Form, Pixel, and CRM Integration</div>
                                                             </div>
-                                                            <p>With our landing pages, you can improve your conversion rates and achieve measurable results in every campaign.</p>
+                                                            <p>On average, our pages convert 2-3x more than template landing pages.</p>
                                                           
                                                         </div>
                                                     </div>
@@ -476,16 +476,16 @@ $page_meta = [
                                                 <div class="row">
                                                     <div class="col-lg-6 align-self-center">
                                                         <div class="left-text" dir="ltr">
-                                                        <h4>SEO</h4>
-                                                            <p>We offer organic SEO services that will help you reach the top spots in search results. Our team specializes in advanced techniques and ongoing analysis to ensure your success online.</p>
+                                                        <h4>Organic SEO</h4>
+                                                            <p>SEO isn't magic — it's a long game that pays dividends. We move sites from pages 3-5 in Google to page 1, using rigorous technical SEO, buying-intent content, and quality backlinks from relevant sites.</p>
                                                             <div class="p-2">
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> In-Depth Keyword Research</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Content Optimization</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Quality Backlinks</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Technical SEO</div>
-                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Competitor Analysis</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Keyword Research with Search-Intent Mapping</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Technical SEO: Core Web Vitals, Schema, Sitemap</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Link Building from Relevant Sites</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Buying-Intent Content with FAQ Schema</div>
+                                                                <div class="my-2"><i class="fa fa-check text-success"></i> Monthly Reports from Google Search Console</div>
                                                             </div>
-                                                            <p>With our SEO solutions, you can increase your online visibility and reach more clients in your target market.</p>
+                                                            <p>First results: 3-6 months. Steady dividends: 6-12 months. Patience pays.</p>
                                                          
                                                         </div>
                                                     </div>
@@ -522,7 +522,7 @@ $page_meta = [
             <div class="col-lg-4 offset-lg-4">
                 <div class="section-heading wow fadeIn">
                     <!-- <h4> Custom Solutions</h4> -->
-                    <h6>Free Quote, No Obligation</h6>
+                    <h6>30-Minute Call — Tailored Quote, No Obligation</h6>
                     <div class="line-dec"></div>
                 </div>
             </div>
@@ -558,8 +558,8 @@ $page_meta = [
         <div class="row" dir="rtl">
             <div class="col-lg-5 text-end">
                 <div class="section-heading wow fadeInRight">
-                    <h6>Coming Soon...</h6>
-                    <h4>You are invited to see our <em>projects</em></h4>
+                    <h6>From Our Work</h6>
+                    <h4>Live Projects, <em>Real Results</em></h4>
                     <div class="line-dec"></div>
                 </div>
             </div>
@@ -576,8 +576,8 @@ $page_meta = [
                                     <img src="assets/images/portfolio-01.jpg" alt="Our projects">
                                 </div>
                                 <div class="down-content">
-                                    <h4>academee</h4>
-                                    <span>Learning Website</span>
+                                    <h4>Academee</h4>
+                                    <span>Online Learning Platform</span>
                                 </div>
                             </div>
                         <!-- </a> -->
@@ -589,7 +589,7 @@ $page_meta = [
                                     <img src="assets/images/portfolio-01.jpg" alt="Our projects">
                                 </div>
                                 <div class="down-content">
-                                    <h4>smart-calc</h4>
+                                    <h4>Smart-Calc</h4>
                                     <span>Home Construction Calculator</span>
                                 </div>
                             </div>
@@ -602,8 +602,8 @@ $page_meta = [
                                     <img src="assets/images/portfolio-02.jpg" alt="Our projects">
                                 </div>
                                 <div class="down-content">
-                                    <h4>isuzu israel</h4>
-                                    <span>CRM Systems</span>
+                                    <h4>Isuzu Israel</h4>
+                                    <span>CRM for National Auto Importer</span>
                                 </div>
                             </div>
                         <!-- </a> -->
@@ -615,7 +615,7 @@ $page_meta = [
                                     <img src="assets/images/portfolio-03.jpg" alt="Our projects">
                                 </div>
                                 <div class="down-content">
-                                    <h4>cryptopop</h4>
+                                    <h4>CryptoPop</h4>
                                     <span>Landing Pages</span>
                                 </div>
                             </div>
@@ -628,7 +628,7 @@ $page_meta = [
                                     <img src="assets/images/portfolio-04.jpg" alt="Our projects">
                                 </div>
                                 <div class="down-content">
-                                    <h4>meat-man</h4>
+                                    <h4>Meat-Man</h4>
                                     <span>Landing Pages</span>
                                 </div>
                             </div>
@@ -647,7 +647,7 @@ $page_meta = [
         <div class="row">
             <div class="col-lg-4 offset-lg-4 wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="section-heading">
-                    <h6>Latest News</h6>
+                    <h6>From Our Blog</h6>
                     <h4>Our <em>Blog</em></h4>
                     <div class="line-dec"></div>
                 </div>
@@ -715,7 +715,7 @@ $page_meta = [
                                     </div>
 
                                     <a href="./blog/crm-solutions.php" target="blank" dir="ltr">
-                                        <h4>The Importance of Using CRM Systems for Customer Relationship Management</h4>
+                                        <h4>The Importance of CRM Systems for Customer Relationship Management</h4>
                                     </a>
                                     <p dir="ltr">A CRM system allows businesses to manage their relationships with customers professionally and efficiently. In this article, we will examine the benefits and capabilities of various CRM systems and how they contribute to improved service.</p>
                                 </div>
@@ -757,7 +757,7 @@ $page_meta = [
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading wow fadeIn">
                     <h6>Talk to Us</h6>
-                    <h4>Contact Us <em>Now</em></h4>
+                    <h4>Drop Us a Line, <em>We Reply in 24h</em></h4>
                     <div class="line-dec"></div>
                 </div>
             </div>

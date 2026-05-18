@@ -5,6 +5,7 @@ node_modules/
 # Secrets
 .env
 .env.*
+!.env.example
 *.key
 
 # Logs & local backups (we keep specific .v1.bak via -f)

@@ -150,22 +150,16 @@ git checkout f814708 -- server/function.php       # the backup commit
 
 ---
 
-## Known issues (flagged for the platform side, not blocking deploy)
+## Known issues (non-blocking)
 
-1. **Central API rejects Hebrew names** — `POST /lead.php` with `name: "ישראל"`
-   returns `401 Invalid API key` (yes, 401, not 400). With an ASCII name the
-   same payload returns 200. Tested both via local function.php pass-through and
-   direct POST to `api.hlo-media.com/lead.php`. Reproduction:
-   ```bash
-   curl -X POST https://api.hlo-media.com/lead.php -H "Content-Type: application/json" \
-     -d '{"api_key":"8c98de1b...","name":"ישראל","email":"test@example.com"}'
-   # → {"error":"Invalid API key"}
-   ```
-   This will block real Hebrew form submissions in production. Needs a fix on
-   `/opt/seo-platform/api/lead.php`.
+1. **`curl_close()` deprecation warning** — PHP 8.x emits a hint. The function
+   is a no-op in PHP 8+ but kept for spec compliance with the PRD template.
+   Safe to remove anytime.
 
-2. **`curl_close()` deprecation warning** — PHP 8.x emits a hint. The function
-   is a no-op in PHP 8+ but I kept it for spec compliance with the PRD
-   template. Safe to remove.
+## Resolved
 
-3. **DB password in `server/config.php`** — pre-existing, see note above.
+- ~~Hebrew name rejection~~ — was a Windows terminal encoding artifact on the
+  local test machine, not an API bug. Verified working on production: leads
+  with Hebrew names (`ישראל`, `ישראל ישראלי`) saved cleanly to master.db.
+- ~~DB password in `server/config.php`~~ — refactored to read from env vars
+  (see "Environment variables" section below).

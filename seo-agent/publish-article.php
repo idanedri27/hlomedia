@@ -75,6 +75,77 @@ function show_page($title, $body_html, $success = true) {
 </html>";
 }
 
+/**
+ * Pull the article title (from H1) and the body HTML (from inside <article>,
+ * minus the CTA section we ourselves add). Used to populate the site's
+ * `posts` table so the homepage blog cards include the new article.
+ */
+function extractArticleData($filepath, $slug) {
+    $php = @file_get_contents($filepath);
+    if ($php === false) return null;
+
+    $title = '';
+    if (preg_match('/<h1[^>]*>(.*?)<\/h1>/is', $php, $m)) {
+        $title = trim(html_entity_decode(strip_tags($m[1]), ENT_QUOTES, 'UTF-8'));
+    } elseif (preg_match('/<title>(.*?)<\/title>/is', $php, $m)) {
+        $title = trim(html_entity_decode(strip_tags($m[1]), ENT_QUOTES, 'UTF-8'));
+        $title = preg_replace('/\s*\|\s*HloMedia.*$/u', '', $title);
+    }
+
+    $content = '';
+    if (preg_match('/<article[^>]*>(.*?)<div\s+class=[\'"]article-cta[\'"]/is', $php, $m)) {
+        $content = trim($m[1]);
+    } elseif (preg_match('/<article[^>]*>(.*?)<\/article>/is', $php, $m)) {
+        $content = trim($m[1]);
+    }
+
+    return ['title' => $title, 'slug' => $slug, 'content' => $content];
+}
+
+/**
+ * Insert into the SITE'S MySQL `posts` table (the one the homepage reads from).
+ * Reads DB creds from the site's own /home/<site>/htdocs/<domain>/.env file,
+ * which must be readable by the api user (group hlomedia, mode 640).
+ *
+ * Returns the new post id or null on failure (failure is non-fatal — the file
+ * is already on disk and indexed by sitemap).
+ */
+function insertSitePost($article, $envPath) {
+    if (!is_readable($envPath)) {
+        error_log("publish-article: cannot read site .env at $envPath (check group/perms)");
+        return null;
+    }
+    $env = [];
+    foreach (file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#' || strpos($line, '=') === false) continue;
+        [$k, $v] = explode('=', $line, 2);
+        $env[trim($k)] = trim($v);
+    }
+
+    $host = $env['DB_HOST']     ?? 'localhost';
+    $name = $env['DB_NAME']     ?? '';
+    $user = $env['DB_USER']     ?? '';
+    $pass = $env['DB_PASSWORD'] ?? '';
+
+    if (!$user || !$name) {
+        error_log("publish-article: incomplete DB env on site .env");
+        return null;
+    }
+
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$name;charset=utf8mb4", $user, $pass, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ]);
+        $stmt = $pdo->prepare("INSERT INTO posts (title, slug, content, created_at) VALUES (?, ?, ?, NOW())");
+        $stmt->execute([$article['title'], $article['slug'], $article['content']]);
+        return (int) $pdo->lastInsertId();
+    } catch (Throwable $e) {
+        error_log("publish-article: posts INSERT failed: " . $e->getMessage());
+        return null;
+    }
+}
+
 function github_api($method, $path, $token, $body = null) {
     $ch = curl_init();
     curl_setopt_array($ch, [
@@ -227,7 +298,15 @@ try {
     $db->prepare("UPDATE publish_tokens SET used_at = CURRENT_TIMESTAMP WHERE token = :t")
        ->execute([':t' => $token]);
 
-    // 6. Log in content_pieces
+    // 6. Insert into the site's MySQL `posts` table so the homepage cards show it
+    $slug = basename($file_path, '.php');
+    $article = extractArticleData($dest, $slug);
+    $mysql_post_id = null;
+    if ($article && $article['title']) {
+        $mysql_post_id = insertSitePost($article, $webroot . '/.env');
+    }
+
+    // 7. Log in content_pieces (central platform)
     $public_article_url = $public_url . '/' . $file_path;
     try {
         $stmt = $db->prepare("
@@ -239,8 +318,8 @@ try {
         $stmt->execute([
             ':site'  => $row['site_id'],
             ':kw'    => '(auto)',
-            ':title' => $file_path,
-            ':slug'  => basename($file_path, '.php'),
+            ':title' => $article['title'] ?? $file_path,
+            ':slug'  => $slug,
             ':url'   => $public_article_url,
         ]);
     } catch (Throwable $e) {
@@ -248,11 +327,17 @@ try {
         error_log('publish-article: content_pieces log failed: ' . $e->getMessage());
     }
 
-    // 7. Success page
+    // 8. Success page
+    $cards_status = $mysql_post_id
+        ? "<p style='color:#10b981;'>✓ נוסף ל-MySQL <code>posts</code> (post #{$mysql_post_id}) - יופיע בכרטיסי הבלוג בעמוד הבית.</p>"
+        : "<p style='color:#f59e0b;'>⚠ לא נוסף ל-MySQL posts (ה-API user לא הצליח לקרוא את ה-.env של האתר?). בדוק הרשאות.</p>";
     $body = "<p>המאמר עלה לאתר. גוגל יסרוק את הסיטמאפ בריצה הבאה שלו ויאנדקס.</p>" .
             "<p>הקובץ נכתב ל:</p><p><code>{$file_path}</code></p>" .
+            $cards_status .
             "<p style='margin-top:24px'><a class='btn' href='" . htmlspecialchars($public_article_url) .
             "' target='_blank'>🔗 צפה במאמר באתר</a></p>" .
+            "<p><a class='btn' style='background:#374151' href='" . htmlspecialchars($public_url) .
+            "/#blog' target='_blank'>📰 צפה בכרטיסי הבלוג בעמוד הבית</a></p>" .
             "<p><small>PR #{$pr} נסגר עם merge. Token סומן כשומש.</small></p>";
     show_page('המאמר פורסם בהצלחה!', $body, true);
 

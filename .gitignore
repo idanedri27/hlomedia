@@ -35,3 +35,5 @@ Thumbs.db
 # /home/hlomedia/.deleted-generate_post.php.bak on the server.
 generate_post.php
 server/migrations/
+
+# (apply-claude-rtl.sh is intentionally committed - portable env tool)

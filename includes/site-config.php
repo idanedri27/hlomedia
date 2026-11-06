@@ -24,7 +24,7 @@ return [
 
     // ---- Site identity ---------------------------------------------------
     'site_url'           => 'https://www.hlo-media.com',
-    'default_og_image'   => 'https://www.hlo-media.com/assets/images/og.jpg',
+    'default_og_image'   => 'https://www.hlo-media.com/assets/hl/og-he.jpg',
     'og_image_he'        => 'https://www.hlo-media.com/assets/hl/og-he.jpg',
     'og_image_en'        => 'https://www.hlo-media.com/assets/hl/og-en.jpg',
     'logo_url'           => 'https://www.hlo-media.com/assets/images/logo_1.jpg',

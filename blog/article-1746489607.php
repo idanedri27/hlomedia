@@ -23,14 +23,14 @@
     <!-- Open Graph for Social Media -->
     <meta property='og:title' content='חדשנות בפיתוח אתרים מונחי VR | HloMedia'>
     <meta property='og:description' content='מאמר מקצועי על חדשנות בפיתוח אתרים מונחי VR - כל המידע שצריך לדעת!'>
-    <meta property='og:image' content='https://www.hlo-media.com/assets/images/og.jpg'>
+    <meta property='og:image' content='https://www.hlo-media.com/assets/hl/og-he.jpg'>
     <meta property='og:url' content='https://www.hlo-media.com/blog/article-1746489607.php'>
     
     <!-- Twitter Card -->
     <meta name='twitter:card' content='summary_large_image'>
     <meta name='twitter:title' content='חדשנות בפיתוח אתרים מונחי VR | HloMedia'>
     <meta name='twitter:description' content='מאמר מקצועי על חדשנות בפיתוח אתרים מונחי VR - כל המידע שצריך לדעת!'>
-    <meta name='twitter:image' content='https://www.hlo-media.com/assets/images/og.jpg'>
+    <meta name='twitter:image' content='https://www.hlo-media.com/assets/hl/og-he.jpg'>
 
     <link rel='preconnect' href='https://fonts.googleapis.com'>
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
@@ -69,7 +69,7 @@
         "logo": { "@type": "ImageObject", "url": "https://www.hlo-media.com/assets/images/logo_1.jpg" }
       },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.hlo-media.com/blog/article-1746489607.php" },
-      "image": "https://www.hlo-media.com/assets/images/og.jpg"
+      "image": "https://www.hlo-media.com/assets/hl/og-he.jpg"
     }
     </script>
     <script type="application/ld+json">

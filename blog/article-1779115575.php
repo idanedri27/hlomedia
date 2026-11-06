@@ -20,14 +20,14 @@
     <meta property="og:locale" content="he_IL">
     <meta property="og:title" content="שיווק פרוגרמטי: המדריך המלא לעסקים | HloMedia">
     <meta property="og:description" content="מה זה שיווק פרוגרמטי, איך הוא עובד, ולמה עסקים בישראל חייבים לאמץ אותו ב-2026. מדריך מעשי מצוות HloMedia עם דוגמאות וטיפים.">
-    <meta property="og:image" content="https://www.hlo-media.com/assets/images/og.jpg">
+    <meta property="og:image" content="https://www.hlo-media.com/assets/hl/og-he.jpg">
     <meta property="og:url" content="https://www.hlo-media.com/blog/article-1779115575.php">
     <meta property="article:published_time" content="2026-05-18T14:46:15.151Z">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="שיווק פרוגרמטי: המדריך המלא לעסקים | HloMedia">
     <meta name="twitter:description" content="מה זה שיווק פרוגרמטי, איך הוא עובד, ולמה עסקים בישראל חייבים לאמץ אותו ב-2026. מדריך מעשי מצוות HloMedia עם דוגמאות וטיפים.">
-    <meta name="twitter:image" content="https://www.hlo-media.com/assets/images/og.jpg">
+    <meta name="twitter:image" content="https://www.hlo-media.com/assets/hl/og-he.jpg">
 
     <script type="application/ld+json">
     {
@@ -44,7 +44,7 @@
         "logo": { "@type": "ImageObject", "url": "https://www.hlo-media.com/assets/images/logo_1.jpg" }
       },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.hlo-media.com/blog/article-1779115575.php" },
-      "image": "https://www.hlo-media.com/assets/images/og.jpg",
+      "image": "https://www.hlo-media.com/assets/hl/og-he.jpg",
       "inLanguage": "he-IL"
     }
     </script>

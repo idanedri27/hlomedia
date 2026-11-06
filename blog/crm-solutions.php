@@ -23,14 +23,14 @@
     <!-- Open Graph for Social Media -->
     <meta property="og:title" content="HloMedia - פתרונות מקצועיים לפיתוח תוכנה ושיווק דיגיטלי">
     <meta property="og:description" content="פתרונות מתקדמים לפיתוח תוכנה, CRM, קידום אורגני ושיווק דיגיטלי.">
-    <meta property="og:image" content="https://www.hlo-media.com/assets/images/og.jpg"> <!-- הזן כאן את כתובת התמונה -->
+    <meta property="og:image" content="https://www.hlo-media.com/assets/hl/og-he.jpg"> <!-- הזן כאן את כתובת התמונה -->
     <meta property="og:url" content="https://www.hlo-media.com"> <!-- הזן כאן את כתובת האתר שלך -->
     
     <!-- Twitter Card for Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hlo-Media - פתרונות מקצועיים לפיתוח תוכנה ושיווק דיגיטלי">
     <meta name="twitter:description" content="פתרונות מתקדמים לפיתוח תוכנה, CRM, קידום אורגני ושיווק דיגיטלי.">
-    <meta name="twitter:image" content="https://www.hlo-media.com/assets/images/og.jpg"> <!-- הזן כאן את כתובת התמונה -->
+    <meta name="twitter:image" content="https://www.hlo-media.com/assets/hl/og-he.jpg"> <!-- הזן כאן את כתובת התמונה -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,7 +85,7 @@
         "logo": { "@type": "ImageObject", "url": "https://www.hlo-media.com/assets/images/logo_1.jpg" }
       },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.hlo-media.com/blog/crm-solutions.php" },
-      "image": "https://www.hlo-media.com/assets/images/og.jpg"
+      "image": "https://www.hlo-media.com/assets/hl/og-he.jpg"
     }
     </script>
     <script type="application/ld+json">

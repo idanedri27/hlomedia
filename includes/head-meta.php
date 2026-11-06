@@ -28,7 +28,18 @@ $lang        = $page_meta['lang']        ?? 'he';
 $title       = $page_meta['title']       ?? $cfg['default_title'];
 $description = $page_meta['description'] ?? $cfg['default_description'];
 $keywords    = $page_meta['keywords']    ?? $cfg['default_keywords'];
-$og_image    = $page_meta['og_image']    ?? $cfg['default_og_image'];
+
+// Language-aware OG image selection: use language-specific images if not explicitly set
+if (!empty($page_meta['og_image'])) {
+    $og_image = $page_meta['og_image'];
+} elseif ($lang === 'en' && !empty($cfg['og_image_en'])) {
+    $og_image = $cfg['og_image_en'];
+} elseif ($lang === 'he' && !empty($cfg['og_image_he'])) {
+    $og_image = $cfg['og_image_he'];
+} else {
+    $og_image = $cfg['default_og_image'];
+}
+
 $robots      = $page_meta['robots']      ?? 'index, follow, max-image-preview:large';
 
 // Auto-build canonical from REQUEST_URI if not provided (strips query string)
